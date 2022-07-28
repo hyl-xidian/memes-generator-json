@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ memeName }}表情包</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <style type="text/css">
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #2f2f2f;
+            line-height: 1.6;
+            text-align: center;
+            flex-wrap: wrap;
+            overflow: auto;
+        }
+
+
+        h1 {
+            margin: 80px 0 40px;
+            font-size: 250%;
+            line-height: 1;
+            color: #252427;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin: 100px 0 15px;
+            font-size: 250%;
+            font-weight: 800;
+            border-bottom: #252427;
+            letter-spacing: 0.1em;
+            color: #252427;
+            text-transform: uppercase;
+        }
+
+        h4 {
+            margin: 30px 0 25px;
+            font-size: 100%;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: #252427;
+        }
+
+        h5 {
+            margin: 40px 0 15px;
+            font-size: 100%;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: #252427;
+        }
+
+        .meme_list {
+            text-align: center;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .refer {
+            font-size: small;
+            margin-top: 30px;
+        }
+
+        #open_json {
+            color: #510c4a;
+            font: weight 600px;
+            border-style: solid;
+            border-width: 1.5px;
+            text-decoration: none;
+        }
+        #open_json:hover {
+            background-color:coral;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Floatuの表情包存储</h1>
+    <a href="/index.html" style="margin: 20px 0 15px;
+        font-size: 120%;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        color: #510c4a;">返回首页</a>
+    <div id="app">
+        <a style="font: weight 600px;">选择: </a>
+        <select id="json_type" v-model="jsonType">{% for type in allTypes %}
+            <option value="{{ type.split('.')[0] }}">{{ type.split('.')[0] }}</option>{% endfor %}
+        </select>
+        <a id="open_json" :href="'/memes/{{ memePath }}/{{ memePath }}_' + jsonType + '.json'">
+            打开{% raw %}{{ jsonType }}{% endraw %}格式的Json文件</a>
+    </div>
+
+    <!-- "There is only one heroism in the world：to see the world as it is and to love it." -->
+    <hr align=center width="90%" SIZE=2>
+    <h4>{{ memeName }}表情包</h4>
+    <div class="meme_list">{% for item in imageUrlList %}
+        <a target="_blank" rel="noreferrer" href="/imgs/{{ memePath }}/{{ item }}"><img
+                src="/imgs/{{ memePath }}/{{ item }}"></a>{% endfor %}
+    </div>
+    <div class="refer">
+        <p>表情包来自: <a href="https://github.com/2X-ercha/Twikoo-Magic" style="color: #510c4a;">
+                @2X-ercha/Twikoo-Magic
+            </a>
+        </p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                jsonType: "owo"
+            }
+        })
+    </script>
+</body>
+
+</html>

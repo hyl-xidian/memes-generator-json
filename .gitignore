@@ -1,3 +1,8 @@
+memes/
+static/
+json_url_info.txt
+# macOS
+.DS_Store
 # Logs
 logs
 *.log

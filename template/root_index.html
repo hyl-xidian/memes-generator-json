@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>表情包</title>
+
+    <style type="text/css">
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #2f2f2f;
+            line-height: 1.6;
+            text-align: center;
+            flex-wrap: wrap;
+            overflow: auto;
+        }
+
+
+        h1 {
+            margin: 80px 0 40px;
+            font-size: 250%;
+            line-height: 1;
+            color: #252427;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin: 100px 0 15px;
+            font-size: 250%;
+            font-weight: 800;
+            border-bottom: #252427;
+            letter-spacing: 0.1em;
+            color: #252427;
+            text-transform: uppercase;
+        }
+
+        h4 {
+            margin: 30px 0 25px;
+            font-size: 100%;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: #252427;
+        }
+
+        h5 {
+            margin: 40px 0 15px;
+            font-size: 100%;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: #252427;
+        }
+
+        .meme_list {
+            text-align: left;
+            padding-left: 6%;
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+        <h1>Floatuの表情包存储</h1>
+        <h5>通过Cloudflare Pages托管</h4>
+            <!-- "There is only one heroism in the world：to see the world as it is and to love it." -->
+            <hr align=center width="90%" SIZE=2>
+            <h4>目前收录了{{ memeNum }}套表情包,来自<a title="@2X-ercha/Twikoo-Magic"
+                    href="https://github.com/2X-ercha/Twikoo-Magic"
+                    style="color: #510c4a;font: weight 600px;">Twikoo-Magic</a></h2>
+                <div class="meme_list">{% for item in memeList %}
+                    <li><a href="/memes/{{ item.path }}/index.html">{{ item.name }}</a></li>{% endfor %}
+                </div>
+    </article>
+</body>
+</html>

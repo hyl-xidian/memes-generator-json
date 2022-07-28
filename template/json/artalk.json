@@ -1,0 +1,10 @@
+{
+    "name": "{{ memeName }}",
+    "type": "image",
+    "items": [{% set comma = joiner() %}{% for item in imageUrlList %}{{ comma() }}
+        {
+            "key": "{{ item.split('.')[0] }}",
+            "val": "{{ baseUrl }}/imgs/{{ memePath }}/{{ item }}"
+        }{% endfor %}
+    ]
+}

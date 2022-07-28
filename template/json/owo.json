@@ -1,0 +1,12 @@
+{
+    "{{ memeName }}":{
+       "type":"image",
+       "container":[{% set comma = joiner() %}{% for item in imageUrlList %}{{ comma() }}       
+            {
+                 "text":"{{ item.split(".")[0] }}",
+                 "icon":"<img src='{{ baseUrl }}/imgs/{{ memePath }}/{{ item }}'>"
+            }{% endfor %}
+        ]
+    }
+}
+  
