@@ -36,14 +36,14 @@ var env = createEnv(`${basePath}./template`, {
     }
 });
 
+// 判断相关文件夹是否存在，不存在则创建
+shell.mkdir('-p', `${basePath}./memes`, `${basePath}./imgs`);
 
-if (getFilesList('./imgs').length < 1) {
+if (getFilesList(`./imgs`).length < 1) {
     console.log("Error: 请在'/imgs'中至少放入一组表情包");
     process.exit(1);
 }
 
-// 判断相关文件夹是否存在，不存在则创建
-shell.mkdir('-p', `${basePath}./memes`, `${basePath}./imgs`);
 if (config['isGenStatic'] == true) {
     shell.mkdir('-p', `${basePath}./static`);
 } else {

@@ -3,5 +3,29 @@
     "chokidar": "^3.5.3",
     "nunjucks": "^3.2.3",
     "shelljs": "^0.8.5"
-  }
+  },
+  "name": "memes-generator-json",
+  "description": "一个基于Nunjucks模板引擎的表情包Json文件生成器",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "files": ["/src", "/template", "config.js"],
+  "devDependencies": {},
+  "scripts": {
+    "gen": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyl-xidian/memes-generator-json.git"
+  },
+  "keywords": [
+    "njk",
+    "memes",
+    "js"
+  ],
+  "author": "floatu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyl-xidian/memes-generator-json/issues"
+  },
+  "homepage": "https://github.com/hyl-xidian/memes-generator-json#readme"
 }

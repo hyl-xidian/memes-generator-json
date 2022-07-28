@@ -1,4 +1,5 @@
 # Memes Json Generator
+[![npm version](https://img.shields.io/npm/v/memes-generator-json?style=flat-square)](https://www.npmjs.com/package/memes-generator-json)
 
 ## 这是什么？
 一个基于Nunjucks模板引擎的表情包Json文件生成器
@@ -42,11 +43,19 @@ emoticons: [{
 
 ## 如何使用？
 
-第一步，将需要引入的一组表情包放在`imgs`文件夹下。命名示例：`imgs/huaji/`
+第零步，克隆下来[本仓库](https://github.com/hyl-xidian/memes-generator-json)，执行`npm i`安装依赖
 
-第二步，在配置文件[config.js](#配置文件)中增加条目
+第一步，将需要引入的一组表情包放在`imgs`文件夹下。示例：`imgs/huaji/*`
 
-第二步，执行`node src/app.js`，会在`/memes/`文件下生成`Json`文件
+第二步，在配置文件[config.js](#配置文件)中增加引入的表情包信息
+> name: 表情包的名字
+>
+> path: 相对于`imgs`的路径，建议设为拼音或者英文缩写，例如：imgs/**huaji**
+>
+> baseUrl: 表情包的url链接前缀，例如：`https://meme-repo.pages.dev`
+
+第三步，执行`node src/app.js`，会在`/memes/`文件下生成`Json`文件
+> 也可使用`npm run gen`命令
 
 输出：
 
@@ -60,7 +69,9 @@ emoticons: [{
 
 ---
 
-如果你希望生成用于展示表情包的静态网站，可以在配置文件`config.js`中开启，`"isGenStatic": "true`，执行`node src/app.js`后，会在`static`目录下生成网站文件
+如果你希望生成用于展示表情包的静态网站，可以在配置文件`config.js`中开启: `"isGenStatic": "true`
+
+执行`node src/app.js`后，会在`static`目录下生成网站文件
 
 ```text
 ./static
@@ -93,7 +104,7 @@ emoticons: [{
 
 该项目结构比较简单，主要由一个模板目录、一个代码目录和一个配置文件组成
 
-> 注意：本项目使用的表情包来自于[2X-ercha/Twikoo-Magic](https://github.com/2X-ercha/Twikoo-Magic)
+> 注意：本项目展示用的表情包来自于[@2X-ercha/Twikoo-Magic](https://github.com/2X-ercha/Twikoo-Magic)
 
 ```text
 ./src
@@ -147,16 +158,8 @@ module.exports = {
 > Ps: Hexo的Next主题就是基于Nunjucks编写的
 
 用`Artalk`官方支持的格式举例：
-```js
-emoticons: [{
-    "name": "颜表情",
-    "type": "emoticon", // 字符类型
-    "items": [
-        { "key": "Hi", "val": "|´・ω・)ノ" },
-        { "key": "开心", "val": "ヾ(≧∇≦*)ゝ" },
-        //...
-    ]
-}, {
+```json
+{
     "name": "滑稽",
     "type": "image", // 图片类型
     "items": [
@@ -166,13 +169,12 @@ emoticons: [{
         },
         //...
     ]
-}],
-
+}
 ```
 
 `njk`模板长这样
 
-```json
+```nunjucks
 {
     "name": "{{ memeName }}",
     "type": "image",
@@ -189,12 +191,12 @@ emoticons: [{
 }
 
 ```
-`json`的`njk`模板有四个传入参数: 
+`njk`模板有四个传入参数: 
 - `memeName`：表情包名称
 - `imageUrlList`：该组表情包下的「图片名字列表」（带拓展名）
-- `baseUrl`：图片的链接前缀
-- `memePath`：表情包存储的路径。例如，滑稽表情包为huaji，可自由设置
+- `baseUrl`：图片的url链接前缀
+- `memePath`：表情包存储的路径。例如，滑稽表情包为huaji
 
 ## 后话
 
-这是我第一次使用`javascript`，不太熟练，若有指教，欢迎提issue或者发邮件讨论，感谢赐教！
+这是我第一次使用`javascript`，不太熟练，若有指教，欢迎提issue或者[发邮件](mailto:hyl.xidian@gmail.com)讨论，感谢赐教！
